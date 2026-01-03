@@ -33,5 +33,64 @@ public class MenuSteps extends TestSetup {
             menuPage.validarRetornoParaHomePage();
 
         }
+    @Dado("que a página inicial é carregada")
+    public void queAPaginaInicialECarregada() {
+        exibirProdutosPage.validarHomePage();
+    }
+
+    @Quando("o usuário aplicar o filtro {string}")
+    public void oUsuarioAplicarOFiltro(String filtro) {
+        switch (filtro) {
+            case "Price (low to high)":
+               menuPage.filtroPrecoCrescente();
+                break;
+            case "Price (high to low)":
+                menuPage.filtroprecoDescresente();
+                break;
+            case "Name (A to Z)":
+                menuPage.filtroNomeAZ();
+                break;
+            case "Name (Z to A)":
+                menuPage.filtroNomeZA();
+                break;
+        }
 
     }
+
+    @Então("os produtos devem ser exibidos do menor preço para o maior")
+    public void osProdutosDevemSerExibidosDoMenorPrecoParaOMaior() {
+        menuPage.validarProdutosOrdenadosPorPrecoCrescente();
+    }
+
+    @Então("os produtos devem ser exibidos do maior preço para o menor")
+    public void osProdutosDevemSerExibidosDoMaiorPrecoParaOMenor() {
+        menuPage.validarProdutosOrdenadosPorPrecoDecrescente();
+    }
+
+    @Então("os produtos devem ser exibidos de A a Z pelo nome")
+    public void osProdutosDevemSerExibidosDeAAZPeloNome() {
+        menuPage.validarProdutosOrdenadosPorNomeCrescente();
+    }
+
+    @Então("os produtos devem ser exibidos de Z a A pelo nome")
+    public void osProdutosDevemSerExibidosDeZAAPeloNome() {
+        menuPage.validarProdutosOrdenadosPorNomeDecrescente();
+    }
+    @Dado("que o usuário está na home")
+    public void queOUsuarioEstaNaHome() {
+        exibirProdutosPage.validarHomePage();
+    }
+
+    @Quando("Clicar no menu e em seguida no botão de logout")
+    public void clicarNoMenuEEmSeguidaNoBotaoDeLogout() {
+        menuPage.clicarMenu();
+        menuPage.clicarBotaoLogout();
+
+    }
+
+    @Então("o usuário deve ser desconectado e redirecionado para a página de login")
+    public void oUsuarioDeveSerDesconectadoERedirecionadoParaAPaginaDeLogin() {
+        menuPage.verificarTelaLogin();
+    }
+}
+
