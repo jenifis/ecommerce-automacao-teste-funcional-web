@@ -4,6 +4,7 @@
     import core.setup.TestSetup;
     import io.cucumber.java.After;
     import io.cucumber.java.pt.Dado;
+    import io.cucumber.java.pt.E;
     import io.cucumber.java.pt.Então;
     import io.cucumber.java.pt.Quando;
 
@@ -38,4 +39,18 @@
                     nome
             );
         }
+        @E("continuar comprando")
+        public void continuarComprando(){
+            cartPage.clicarContinuarComprando();
+        }
+        @E("validar redes sociais")
+        public void validarRedes(){
+            cartPage.validarRedesSociais();
+        }
+
+        @E("clicar no botão about")
+        public void clicarBotaoAbout(){
+            cartPage.clicarBotaoAbout();
+        }
+
     }
