@@ -3,8 +3,11 @@ package core.steps;
 import com.codeborne.selenide.Selenide;
 import core.setup.TestSetup;
 import io.cucumber.java.After;
+import io.cucumber.java.pt.Dado;
+import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
+import pages.CartPage;
 
 public class CartSteps extends TestSetup {
 
@@ -76,5 +79,24 @@ public void clicarEmBackHome(){
     public void clicarNoNomeDoProduto(String nomeProduto) {
         cartPage.clicarNoNomeDoProduto(nomeProduto);
     }
+    @Dado("que o usuário tenha adicionado o produto ao carrinho")
+    public void queOUsuarioTenhaAdicionadoOProdutoAoCarrinho() {
+        cartPage.clicarBotaoCarrinho();
+    }
 
+    @Quando("acessar o carrinho")
+    public void acessarOCarrinho() {
+      cartPage.clicarNoCarrinho();
+    }
+
+    @E("remover o produto {string}")
+    public void removerOProduto(String nomeProduto) {
+        cartPage.clicarBotaoRemoverItem(nomeProduto);
+
+    }
+
+    @Então("o carrinho está vazio")
+    public void oCarrinhoEstaVazio() {
+        menuPage.validarCarrinhoVazio();
+    }
 }

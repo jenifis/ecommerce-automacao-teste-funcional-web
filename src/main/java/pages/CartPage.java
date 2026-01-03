@@ -6,8 +6,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Selectors.by;
-import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -119,6 +118,14 @@ public class CartPage {
     public void clicarBotaoAbout(){
         $(byXpath("//*[@id=\"react-burger-menu-btn\"]")).click();
         $(byXpath("//*[@id=\"about_sidebar_link\"]")).click();
+    }
+    public void clicarBotaoCarrinho() {
+        $(byId("add-to-cart-sauce-labs-backpack")).shouldBe(Condition.visible, Duration.ofSeconds(30))
+                .click();
+    }
+    public void clicarBotaoRemoverItem (String nomeProduto){
+        $(byXpath("//button[contains(@id, 'remove-')]"))
+                .shouldBe(Condition.visible,Duration.ofSeconds(30)).click();
     }
 
 }
