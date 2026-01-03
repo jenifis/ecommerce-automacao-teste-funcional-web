@@ -96,4 +96,29 @@ public class CartPage {
                 .shouldBe(Condition.visible, Duration.ofSeconds(30))
                 .click();
     }
+    public void clicarContinuarComprando(){
+        $(byXpath("//*[@id=\"continue-shopping\"]"))
+                .shouldBe(Condition.visible, Duration.ofSeconds(30));
+    }
+
+    public void validarRedesSociais() {
+
+        $("[data-test='social-twitter']")
+                .shouldBe(Condition.visible)
+                .shouldHave(Condition.attribute("href", "https://twitter.com/saucelabs"));
+
+        $("[data-test='social-facebook']")
+                .shouldBe(Condition.visible)
+                .shouldHave(Condition.attribute("href", "https://www.facebook.com/saucelabs"));
+
+        $("[data-test='social-linkedin']")
+                .shouldBe(Condition.visible)
+                .shouldHave(Condition.attribute("href", "https://www.linkedin.com/company/sauce-labs/"));
+    }
+
+    public void clicarBotaoAbout(){
+        $(byXpath("//*[@id=\"react-burger-menu-btn\"]")).click();
+        $(byXpath("//*[@id=\"about_sidebar_link\"]")).click();
+    }
+
 }

@@ -33,6 +33,7 @@ Funcionalidade: Comprar produtos
     Dado que seja exibido o produto na home "<nome>" "<descricao>" "<preco>"
     Quando o usuario selecionar o produto "<nome>" na home
     E clicar no carrinho
+    E continuar comprando
     E o usuario clicar em checkout
     E preencher as informações de entrega "<nomeComprador>" "<sobrenomeComprador>" "<cep>"
     E clicar em continuar
@@ -41,6 +42,8 @@ Funcionalidade: Comprar produtos
     Entao sera validado a mensagem de agradecimento pela compra
     E sera validado o texto de despacho da compra
     Quando clicar em back home para voltar ao menu inicial
+    E validar redes sociais
+    E clicar no botão about
 
     Exemplos:
       | nome                              | descricao                                                                                                                                                              | preco | nomeComprador | sobrenomeComprador | cep                 |
@@ -56,6 +59,7 @@ Funcionalidade: Comprar produtos
     E clicar em Back to products
     Entao a home de produtos deve ser exibida
     E deve ser exibido o produto na Home "<nome>" "<descricao>" "<preco>"
+
 
     Exemplos:
       | nome                              | descricao                                                                                                                                                              | preco |
